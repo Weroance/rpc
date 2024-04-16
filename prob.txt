@@ -1,0 +1,4 @@
+
+gets coice of user in function parameter
+gets choice of computer in function
+declares winner in console
