@@ -23,17 +23,32 @@ function getComputerChoice(){
 // convert it to rock paper or scissors
 function Play(player, computer){
     let playerChoice = player.toUpperCase()
-      if (playerChoice == computer) {
-        return 'STALEMATE';
-      }
-      else if ((playerChoice === 'ROCK' && computer === 'PAPER') 
-      || (playerChoice === 'PAPER' && computer === 'SCISSORS') 
-      || (playerChoice === 'SCISSORS' && computer === 'ROCK'))    {
-        return 'you Lose!';
-      }
-        else  {
-        return 'You Win!';
-      }
+    if (playerChoice === computer)  {
+        return 'STALEMATE!'
+    }
+    else    {
+        switch(playerChoice + ' ' + computer){
+            case    'ROCK PAPER':;
+            case   'PAPER SCISSORS':;
+            case    'SCISSORS ROCK':; 
+                return 'YOU LOSE!';
+            default:
+                return 'YOU WIN!' 
+    
+        }
+    }
+
+    //   if (playerChoice == computer) {
+    //     return 'STALEMATE';
+    //   }
+    //   else if ((playerChoice === 'ROCK' && computer === 'PAPER') 
+    //   || (playerChoice === 'PAPER' && computer === 'SCISSORS') 
+    //   || (playerChoice === 'SCISSORS' && computer === 'ROCK'))    {
+    //     return 'you Lose!';
+    //   }
+    //     else  {
+    //     return 'You Win!';
+    //   }
       
     }
 getComputerChoice() 
