@@ -19,8 +19,7 @@ function getComputerChoice(){
             break;
 }
 }
-// get random computer choice 
-// convert it to rock paper or scissors
+
 function Play(player, computer){
     let playerChoice = player.toUpperCase()
     if (playerChoice === computer)  {
@@ -37,20 +36,16 @@ function Play(player, computer){
     
         }
     }
-
-    //   if (playerChoice == computer) {
-    //     return 'STALEMATE';
-    //   }
-    //   else if ((playerChoice === 'ROCK' && computer === 'PAPER') 
-    //   || (playerChoice === 'PAPER' && computer === 'SCISSORS') 
-    //   || (playerChoice === 'SCISSORS' && computer === 'ROCK'))    {
-    //     return 'you Lose!';
-    //   }
-    //     else  {
-    //     return 'You Win!';
-    //   }
-      
     }
-getComputerChoice() 
+
+    function playGame()
+    let wins = 0
+    let losses = 0   
+    while    (wins < 3 || losses < 3)   {
+        
+    }
+
+
+    getComputerChoice() 
 console.log(computerChoice)
 console.log(Play('paper', computerChoice))
