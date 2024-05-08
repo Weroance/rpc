@@ -1,12 +1,12 @@
-// rock > scissors
-// scissors > paper 
-// paper > rock
 
-//  get user choice
 
 let computerChoice = 'Computer'
 let playerChoice = 'Player'
-let winOrLose = ' '
+let turnOutcome = ' '
+let playerWins = 0
+let computerWins = 0
+const gamePlay = document.querySelector("#gamePlay") 
+const score = document.querySelector("#score")
 
 function getComputerChoice(){
     switch (Math.floor(Math.random() * 3))  {
@@ -22,46 +22,67 @@ function getComputerChoice(){
 }
 }
 
-function playRound(p){
+
+
+function playRound(){
+
     getComputerChoice()
-    playerChoice = p.toUpperCase()
-    if (playerChoice === computerChoice)  {
-        winOrLose = 'STALEMATE!'
+
+    if ( playerChoice === computerChoice)  {
+        turnOutcome = 'STALEMATE!'
         }
-    else if(playerChoice !== 'ROCK' && playerChoice !== 'PAPER' && playerChoice !== 'SCISSORS' ){
-        winOrLose = 'Invalid option'}
+    
     else    {
         switch (playerChoice + ' ' + computerChoice){
-            case 'ROCK PAPER':;
-            case 'PAPER SCISSORS':;
-            case 'SCISSORS ROCK':; 
-                winOrLose = 'YOU LOSE!';
+            case 'ROCK PAPER':
+            case 'PAPER SCISSORS':
+            case 'SCISSORS ROCK': 
+                turnOutcome = 'YOU LOSE!';
                 break;
             default:
-                winOrLose = 'YOU WIN!' 
-    
+                turnOutcome = 'YOU WIN!' 
         }
     }
     }
 
-function playGame(){
-    let wins = 0;
-    let losses = 0;   
-    while    ( wins < 3 && losses < 3 )   {
-        playRound(prompt(playerChoice + ' Vs. ' + computerChoice + ': ' + winOrLose + ' ' + wins + '-' + losses + ' . ROCK, PAPER OR SCISSORS?',), computerChoice)
-       
-        if (winOrLose == 'YOU WIN!') {
-            ++wins;
+    const choiceButtons = document.querySelectorAll(".choiceButton")
+
+    choiceButtons.forEach (function(button) {
+        
+        button.addEventListener("click",function(event){
+        playerChoice = event.target.innerHTML.toUpperCase();
+        
+        playRound()
+        
+        if (turnOutcome == 'YOU LOSE!') {
+                computerWins++;
+                gamePlay.innerHTML = turnOutcome;
+            }
+            else if (turnOutcome == 'YOU WIN!') {
+                playerWins++;
+                gamePlay.innerHTML = turnOutcome;
             }
 
-        else if(winOrLose == 'YOU LOSE!') {
-            ++losses;
+            else gamePlay.innerHTML = turnOutcome;
+
+            score.innerHTML = "Score, Player - " + playerWins + ", Computer - " + computerWins;
+
+        if (playerWins == 5 ) {
+                gamePlay.innerHTML = "YOU WIN THE GAME!";
+                playerWins = 0 
+                computerWins = 0
             }
-       }
-       if (winOrLose == 'YOU LOSE!') {
-        alert('YOU LOST, ' + wins + ' to ' + losses + '.')
-       }
-        else {alert('YOU WON, ' + wins + ' to ' + losses + '.')}
-    }
+                else if (computerWins == 5)  {
+                    gamePlay.innerHTML = "YOU LOSE THE GAME!"
+                    playerWins = 0 
+                    computerWins = 0
+                }
+            
+        
+
+        console.log(computerChoice)
+        console.log(playerChoice)
+        console.log(turnOutcome)
+        });
+    });
     
-playGame()
