@@ -7,6 +7,7 @@ let playerWins = 0
 let computerWins = 0
 const gamePlay = document.querySelector("#gamePlay") 
 const score = document.querySelector("#score")
+const computerChose = document.querySelector("#computerChose")
 
 function getComputerChoice(){
     switch (Math.floor(Math.random() * 3))  {
@@ -53,7 +54,7 @@ function playRound(){
         playerChoice = event.target.innerHTML.toUpperCase();
         
         playRound()
-        
+        computerChose.innerHTML = "The computer chose " + computerChoice
         if (turnOutcome == 'YOU LOSE!') {
                 computerWins++;
                 gamePlay.innerHTML = turnOutcome;
@@ -65,7 +66,7 @@ function playRound(){
 
             else gamePlay.innerHTML = turnOutcome;
 
-            score.innerHTML = "Score, Player - " + playerWins + ", Computer - " + computerWins;
+            score.innerHTML = "Player - " + playerWins + ", Computer - " + computerWins;
 
         if (playerWins == 5 ) {
                 gamePlay.innerHTML = "YOU WIN THE GAME!";
